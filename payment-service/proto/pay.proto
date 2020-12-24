@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package paymentservice;
+
+service PaymentManager {
+  rpc Charge (ChargeRequest) returns (ChargeResponse);
+  rpc Capture (ChargeRequest) returns (ChargeResponse);
+  rpc Refund (ChargeRequest) returns (ChargeResponse);
+}
+
+message ChargeRequest {
+  int64 id = 1;
+  string token = 2;
+  int64 amount = 3;
+  string name = 4;
+  string desc = 5;
+  string charge_id = 6;
+}
+
+message ChargeResponse {
+  string id = 1;
+  bool paid = 2;
+  bool refunded = 3;
+  bool captured = 4;
+  int64 amount = 5;
+}
