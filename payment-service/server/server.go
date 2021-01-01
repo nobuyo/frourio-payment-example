@@ -91,7 +91,7 @@ func main() {
 	gpay.RegisterPaymentManagerServer(s, &server{})
 
 	reflection.Register(s)
-	log.Printf("gRPC server started: localhost%s\n", port)
+	log.Printf("gRPC server started: %s\n", port)
 
 	if err := s.Serve(listen); err != nil {
 		log.Fatalf("failed to serve: %w", err)
