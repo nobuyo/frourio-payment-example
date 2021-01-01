@@ -1,7 +1,13 @@
 .itemCard {
+  border: 1px solid #8b8b8b;
+  border-radius: 8px;
   padding: 12px 24px;
   display: block;
   cursor: pointer;
+}
+
+.itemCard + .itemCard {
+  margin-top: 12px;
 }
 
 .itemName {

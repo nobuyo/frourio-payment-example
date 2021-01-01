@@ -1,0 +1,49 @@
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.itemInfo {
+  margin-top: 12px;
+}
+
+.itemName {
+  font-size: 1.8rem;
+}
+
+.itemPrice::before {
+  content: '￥';
+}
+
+.itemPrice {
+  margin-top: 6px;
+}
+
+.itemDescription {
+}
+
+.cardForm {
+  margin-top: 40px;
+}
+
+.submitButton {
+  margin-top: 12px;
+  padding: 8px 12px;
+}
+
+.formItem label {
+  display: block;
+  margin-top: 12px;
+}
+
+.formItem input {
+  border: 1px solid #b3b3b3;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.formItem input[type='text'] {
+  width: 100%;
+}
+

@@ -1,9 +1,8 @@
 import Head from 'next/head'
-import { useCallback, useState, FormEvent, ChangeEvent, useEffect } from 'react'
+import { useState, FormEvent } from 'react'
 import useAspidaSWR from '@aspida/swr'
 import styles from '~/styles/ItemDetail.module.css'
 import { apiClient } from '~/utils/apiClient'
-import { Item, Purchase } from '$prisma/client'
 import { useRouter } from 'next/router'
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
@@ -77,30 +76,38 @@ const ItemDetail = () => {
       </Head>
 
       <main>
-        <div className="itemInfo">
-          <div className="itemName">{item?.name}</div>
-          <div className="itemPrice">{item?.amount}</div>
-          <div className="itemDescription">{item?.description}</div>
+        <div className={styles.container}>
+          <a onClick={() => {
+            router.push({
+              pathname: '/',
+            })
+          }}>back</a>
+          <hr/>
+          <div className={styles.itemInfo}>
+            <div className={styles.itemName}>{item?.name}</div>
+            <div className={styles.itemDescription}>{item?.description}</div>
+            <div className={styles.itemPrice}>{item?.amount}</div>
+          </div>
+          <form className={styles.cardForm} onSubmit={handleSubmit}>
+            <div className={styles.formItem}>
+              <label>Card Number</label>
+              <input type="text" value={form.number} onChange={handleChange('number')} />
+            </div>
+            <div className={styles.formItem}>
+              <label>Holder Name</label>
+              <input type="text" value={form.name} onChange={handleChange('name')} />
+            </div>
+            <div className={styles.formItem}>
+              <label>Exp</label>
+              <DatePicker dateFormat="MM/yyyy" showMonthYearPicker selected={expDate} onChange={data => handleDateChange(data) } />
+            </div>
+            <div className={styles.formItem}>
+              <label>CVC</label>
+              <input type="password" value={form.cvc} onChange={handleChange('cvc')} />
+            </div>
+            <input type="submit" value="Submit" className={styles.submitButton} />
+          </form>
         </div>
-        <form className="cardForm" onSubmit={handleSubmit}>
-          <div className="formItem">
-            <label>number</label>
-            <input type="text" value={form.number} onChange={handleChange('number')} />
-          </div>
-          <div className="formItem">
-            <label>name</label>
-            <input type="text" value={form.name} onChange={handleChange('name')} />
-          </div>
-          <div className="formItem">
-            <label>expDate</label>
-            <DatePicker dateFormat="MM/yyyy" showMonthYearPicker selected={expDate} onChange={data => handleDateChange(data) } />
-          </div>
-          <div className="formItem">
-            <label>cvc</label>
-            <input type="text" value={form.cvc} onChange={handleChange('cvc')} />
-          </div>
-          <input type="submit" value="Submit" />
-        </form>
       </main>
     </div>
   )

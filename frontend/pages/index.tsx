@@ -1,10 +1,7 @@
 import Head from 'next/head'
-import { useCallback, useState, FormEvent, ChangeEvent } from 'react'
 import useAspidaSWR from '@aspida/swr'
 import styles from '~/styles/Home.module.css'
 import { apiClient } from '~/utils/apiClient'
-import { Item, Purchase } from '$prisma/client'
-import UserBanner from '~/components/UserBanner'
 import ItemCard from '~/components/ItemCard'
 import { useRouter } from 'next/router'
 
@@ -23,12 +20,6 @@ const Home = () => {
       </Head>
 
       <main className={styles.main}>
-        {/* <UserBanner /> */}
-
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
         <p className={styles.description}>gRPC + Frourio + Prisma app</p>
 
         <div>
