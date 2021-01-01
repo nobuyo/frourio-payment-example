@@ -4,13 +4,12 @@ services:
     build: .
     tty: true
     ports:
-      - '50101:50101'
+      - '50051:50051'
     command: go run payment-service/server/server.go
     volumes:
       - .:/go/src/app
     env_file:
       - secrets.env
-
   postgres:
     image: postgres:11.6-alpine
     ports:

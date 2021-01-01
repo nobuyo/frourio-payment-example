@@ -9,4 +9,4 @@ RUN go get google.golang.org/grpc && \
   go get github.com/golang/protobuf/protoc-gen-go && \
   go get github.com/payjp/payjp-go/v1
 
-EXPOSE 50101
+EXPOSE 50051
